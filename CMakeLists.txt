@@ -9,7 +9,7 @@ find_package(Boost REQUIRED COMPONENTS program_options)
 find_package(libzippp CONFIG REQUIRED)
 find_package(OpenSSL REQUIRED)
 
-include_directories(.)
+include_directories(. third-party)
 
 add_executable(fs main.cpp)
 target_link_libraries(fs Boost::program_options OpenSSL::SSL libzippp::libzippp)

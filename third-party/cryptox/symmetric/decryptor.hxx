@@ -12,26 +12,26 @@
 
 #pragma once
 #include "basic_endec.hxx"
-#include "../detail/is_encryptor.hxx"
+#include "third-party/cryptox/detail/is_decryptor.hxx"
 
 namespace cryptox {
 
 	template <class Algorithm>
-	class encryptor : public basic_endec<
+	class decryptor : public basic_endec<
 		Algorithm,
-		EVP_EncryptInit_ex,
-		EVP_EncryptUpdate,
-		EVP_EncryptFinal_ex
+		EVP_DecryptInit_ex,
+		EVP_DecryptUpdate,
+		EVP_DecryptFinal_ex
 	> {
 		typedef basic_endec<
 			Algorithm,
-			EVP_EncryptInit_ex,
-			EVP_EncryptUpdate,
-			EVP_EncryptFinal_ex
+			EVP_DecryptInit_ex,
+			EVP_DecryptUpdate,
+			EVP_DecryptFinal_ex
 		> base_type;
 	public:
 		template <class KeyInputIterator, class IVInputIterator>
-		encryptor(KeyInputIterator key_first, KeyInputIterator key_last,
+		decryptor(KeyInputIterator key_first, KeyInputIterator key_last,
 		           IVInputIterator  iv_first,  IVInputIterator  iv_last
 		) : base_type(key_first, key_last, iv_first, iv_last) {
 		}
@@ -42,8 +42,8 @@ namespace cryptox {
 namespace cryptox { namespace detail {
 
 	template <class Algorithm>
-	struct is_encryptor<
-		encryptor<Algorithm>
+	struct is_decryptor<
+		decryptor<Algorithm>
 	> : boost::true_type {};
 
 }}

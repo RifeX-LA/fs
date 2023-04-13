@@ -11,9 +11,9 @@
 // [===========================================================================]
 
 #pragma once
-#include "../detail/exceptions.hxx"
-#include "../message_digests/message_digest_algorithm.hxx"
-#include "../block.hxx"
+#include "third-party/cryptox/detail/exceptions.hxx"
+#include "third-party/cryptox/message_digests/message_digest_algorithm.hxx"
+#include "third-party/cryptox/block.hxx"
 #include <boost/throw_exception.hpp>
 #include <vector>
 

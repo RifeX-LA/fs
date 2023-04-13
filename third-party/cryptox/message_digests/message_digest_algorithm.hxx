@@ -11,9 +11,9 @@
 // [===========================================================================]
 
 #pragma once
-#include "../block.hxx"
-#include "detail/message_digest_pp.hxx"
-#include "../detail/openssl.hxx"
+#include "third-party/cryptox/block.hxx"
+#include "third-party/cryptox/message_digests/detail/message_digest_pp.hxx"
+#include "third-party/cryptox/detail/openssl.hxx"
 #include "manifest.hxx"
 
 namespace cryptox {

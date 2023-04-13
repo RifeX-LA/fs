@@ -17,7 +17,7 @@ This is a C++ application to interact with files
     ```
     ./fs --hash <file path>
     ```
-   Output file will be placed in the same directory as the original file and has the following name: `<orinal filename>.hash`. 
+   Output file will be placed in the same directory as the original file and has the following name: `<original filename>.hash`. 
 
 
 3. Count the number of rows in the given file:
@@ -25,12 +25,18 @@ This is a C++ application to interact with files
     ./fs --lines <file path>
     ```
 
-4. Run commands with path's existence checking (without this flag **the `std::terminate()` may be called** and no message will be displayed stating that a file doesn't exist):
-     ```
+4. Run commands with path's existence checking (without this flag **the `std::terminate()` may be called** and no message will be displayed stating that the file doesn't exist):
+    ```
     ./fs --check-path  <flags...>
     ``` 
+   
 
-If standard privileges are not sufficient to perform the action, **root privileges will be requested**.
+5. Don't request root privileges on failure
+   ```
+    ./fs --no-root  <flags...>
+   ``` 
+
+If standard privileges are not sufficient to perform the action and `--no-root` flag is _not_ provided, **root privileges will be requested**.
 
 If the path is specified incorrectly, **the `std::terminate()` may be called**. To avoid this use `--check-path` flag.
 
@@ -40,8 +46,8 @@ If the path is specified incorrectly, **the `std::terminate()` may be called**. 
 * `CMake 3.16` or higher
 * `gcc 10`/`clang 10` or higher 
 * `boost 1.65.1` or higher **with compiled binaries**
-* `libzippp`
-* `OpenSSL`
+* `libzippp` library
+* `OpenSSL` library
 
 ## Build
 

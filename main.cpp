@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[]) {
     if (flow::process::running_as_root()) {
-        std::cerr << "You must not to run this application as root\n";
+        std::cerr << "You must not to run this application as root. Root privileges will be requested if necessary\n";
         return 0;
     }
 
@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-    flow::program_options::process(vm, true);
+    flow::program_options::process(vm, !vm.count("no-root"));
 
     return 0;
 }

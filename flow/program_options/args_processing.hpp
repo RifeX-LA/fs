@@ -14,7 +14,8 @@ namespace flow::program_options {
             ("zip", po::value<std::string>(), "Create zip archive with given file")
             ("hash", po::value<std::string>(), "Computes SHA-256 hash of given file")
             ("lines", po::value<std::string>(), "Get file's rows number")
-            ("check-path", "Do options with path's existence checking");
+            ("check-path", "Do options with path's existence checking")
+            ("no-root", "Don't request root privileges on failure");
 
         po::variables_map vm;
         po::store(po::command_line_parser(argc, argv).options(desc).run(), vm);

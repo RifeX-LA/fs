@@ -11,8 +11,8 @@
 // [===========================================================================]
 
 #pragma once
-#include "detail/symmetric_algorithm_pp.hxx"
-#include "../detail/openssl.hxx"
+#include "third-party/cryptox/symmetric/detail/symmetric_algorithm_pp.hxx"
+#include "third-party/cryptox/detail/openssl.hxx"
 #include "manifest.hxx"
 
 namespace cryptox {

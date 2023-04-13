@@ -1,7 +1,7 @@
 #pragma once
 #include "basic_endec_filter.hxx"
-#include "../../detail/is_encryptor.hxx"
-#include "../../detail/is_decryptor.hxx"
+#include "third-party/cryptox/detail/is_encryptor.hxx"
+#include "third-party/cryptox/detail/is_decryptor.hxx"
 #include <boost/iostreams/filter/symmetric.hpp>
 #include <memory>
 #include <deque>

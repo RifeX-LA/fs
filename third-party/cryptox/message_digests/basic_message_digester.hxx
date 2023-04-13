@@ -11,8 +11,8 @@
 // [===========================================================================]
 
 #pragma once
-#include "../detail/openssl.hxx"
-#include "../detail/exceptions.hxx"
+#include "third-party/cryptox/detail/openssl.hxx"
+#include "third-party/cryptox/detail/exceptions.hxx"
 #include <boost/noncopyable.hpp>
 #include <boost/throw_exception.hpp>
 

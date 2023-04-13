@@ -13,7 +13,7 @@
 #pragma once
 #include "basic_message_digester.hxx"
 #include "message_digest_algorithm.hxx"
-#include "../detail/is_container.hxx"
+#include "third-party/cryptox/detail/is_container.hxx"
 
 #include <boost/mpl/not.hpp>
 

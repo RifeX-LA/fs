@@ -11,39 +11,41 @@
 // [===========================================================================]
 
 #pragma once
-#include "basic_endec.hxx"
-#include "../detail/is_decryptor.hxx"
+#include "openssl.hxx"
+#include <string>
+#include <iterator>
 
 namespace cryptox {
 
-	template <class Algorithm>
-	class decryptor : public basic_endec<
-		Algorithm,
-		EVP_DecryptInit_ex,
-		EVP_DecryptUpdate,
-		EVP_DecryptFinal_ex
-	> {
-		typedef basic_endec<
-			Algorithm,
-			EVP_DecryptInit_ex,
-			EVP_DecryptUpdate,
-			EVP_DecryptFinal_ex
-		> base_type;
-	public:
-		template <class KeyInputIterator, class IVInputIterator>
-		decryptor(KeyInputIterator key_first, KeyInputIterator key_last,
-		           IVInputIterator  iv_first,  IVInputIterator  iv_last
-		) : base_type(key_first, key_last, iv_first, iv_last) {
+	template <class Input, class Output>
+	Output to_base64(Input first, Input last, Output d_first) {
+		while (first != last) {
+			std::uint8_t input[128];
+			size_t input_size = 0;
+			while (input_size < sizeof(input) && first != last)
+				input[input_size++] = *first++;
+
+			std::uint8_t output[160];
+			const size_t output_size = EVP_EncodeBlock(output,
+			                                           input,
+			                                           input_size);
+
+			d_first = std::copy(output, output + output_size, d_first);
 		}
-	};
+
+		return d_first;
+	}
+
+	template <class Input>
+	std::string to_base64(Input first, Input last) {
+		std::string result;
+		to_base64(first, last, std::back_inserter(result));
+		return result;
+	}
+
+	template <typename Container>
+	std::string to_base64(const Container& container) {
+		return to_base64(container.begin(), container.end());
+	}
 
 }
-
-namespace cryptox { namespace detail {
-
-	template <class Algorithm>
-	struct is_decryptor<
-		decryptor<Algorithm>
-	> : boost::true_type {};
-
-}}

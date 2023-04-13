@@ -11,6 +11,6 @@
 // [===========================================================================]
 
 #pragma once
-#include "key_derivation/pbkdf2.hxx"
-#include "message_digests/digest.hxx"
+#include "third-party/cryptox/key_derivation/pbkdf2.hxx"
+#include "third-party/cryptox/message_digests/digest.hxx"
 //include encrypt/decrypt
