@@ -32,7 +32,7 @@ namespace flow::filesystem {
 
     std::string read_from_file(const std::filesystem::path& file) {
         auto fin = detail::create_ifstream(file);
-        return {std::istream_iterator<char>{fin}, std::istream_iterator<char>{}};
+        return {std::istreambuf_iterator<char>{fin}, std::istreambuf_iterator<char>{}};
     }
 
     std::size_t lines_count(const std::filesystem::path& file) {
